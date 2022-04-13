@@ -1,0 +1,19 @@
+version: '2'
+services:
+  icecast:
+    build:
+      context: .
+      args:
+        - http_proxy
+        - https_proxy
+        - HTTP_PROXY
+        - HTTPS_PROXY
+    volumes:
+      - wwwroot:/usr/share/icecast/web/stream
+
+    ports:
+      - 8000:8000
+      - 18000:18000
+
+volumes:
+  wwwroot:

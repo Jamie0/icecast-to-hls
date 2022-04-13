@@ -1,0 +1,69 @@
+<icecast>
+    <location>UK</location>
+    <admin>index.hm</admin>
+
+    <limits>
+        <clients>100000</clients>
+        <sources>1000</sources>
+        <queue-size>524288</queue-size>
+        <client-timeout>30</client-timeout>
+        <header-timeout>15</header-timeout>
+        <source-timeout>10</source-timeout>
+        <threadpool>10</threadpool>
+        <burst-on-connect>1</burst-on-connect>
+        <burst-size>65535</burst-size>
+    </limits>
+
+    <authentication>
+        <source-password>hackme</source-password>
+        <relay-password>hackme</relay-password>
+
+        <admin-user>admin</admin-user>
+        <admin-password>hackme</admin-password>
+    </authentication>
+
+    <mount>
+        <mount-name>/testy</mount-name>
+        <on-connect>/connect.sh</on-connect>
+        <on-disconnect>/disconnect.sh</on-disconnect>
+    </mount>
+
+    <hostname>localhost</hostname>
+
+    <listen-socket>
+        <port>18000</port>
+    </listen-socket>
+
+    <fileserve>1</fileserve>
+
+    <paths>
+        <basedir>/usr/share/icecast</basedir>
+
+        <logdir>/var/log/icecast</logdir>
+        <webroot>/usr/share/icecast/web</webroot>
+        <adminroot>/usr/share/icecast/admin</adminroot>
+    </paths>
+
+    <logging>
+        <accesslog>access.log</accesslog>
+        <errorlog>error.log</errorlog>
+      	<loglevel>4</loglevel> <!-- 4 Debug, 3 Info, 2 Warn, 1 Error -->
+      	<logsize>10000</logsize> <!-- Max size of a logfile -->
+    </logging>
+
+    <security>
+        <chroot>0</chroot>
+        <changeowner>
+            <user>icecast</user>
+            <group>icecast</group>
+        </changeowner>
+    </security>
+
+    <http-headers>
+        <header name="Cache-Control" value="no-cache" />
+        <header name="Expires" value="0" />
+        <header name="Access-Control-Allow-Origin" value="*" />
+    </http-headers>
+ 
+</icecast>
+
