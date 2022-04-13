@@ -27,7 +27,7 @@ RUN wget -O - https://openresty.org/package/pubkey.gpg | apt-key add - && echo "
 ADD ./start.sh /start.sh
 ADD ./etc /etc
 COPY ./connect.sh ./disconnect.sh /
-COPY ./packager /bin/packager
+RUN wget 'https://github.com/shaka-project/shaka-packager/releases/download/v2.6.1/packager-linux-x64' -O /bin/packager
 
 RUN chmod +x /start.sh /bin/packager /connect.sh /disconnect.sh
 
